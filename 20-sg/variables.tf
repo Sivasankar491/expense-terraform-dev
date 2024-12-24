@@ -6,8 +6,24 @@ variable "environment" {
     default = "dev" 
 }
 
-variable "sg_name" {
+variable "mysql_sg_name" {
     default = "mysql"
+}
+
+variable "backend_sg_name" {
+    default = "backend"
+}
+
+variable "frontend_sg_name" {
+    default = "frontend"
+}
+
+variable "bastion_sg_name" {
+    default = "bastion"
+}
+
+variable "ansible_sg_name" {
+    default = "ansible"
 }
 
 variable "common_tags" {
@@ -15,27 +31,37 @@ variable "common_tags" {
     default = {}
 }
 
-variable "sg_tags" {
+variable "mysql_sg_tags" {
     type = map
-    default = {}
+    default = {
+        component = "mysql"
+    }
 }
 
-variable "cidr_block" {
-    default = "10.0.0.0/16"
+variable "backend_sg_tags" {
+    type = map
+    default = {
+        component = "backend"
+    }
 }
 
-variable "public_subnets" {
-    default = ["10.0.1.0/24", "10.0.2.0/24"]  
+variable "frontend_sg_tags" {
+    type = map
+    default = {
+        component = "frontend"
+    }
 }
 
-variable "private_subnets" {
-    default = ["10.0.11.0/24", "10.0.12.0/24"]  
+variable "bastion_sg_tags" {
+    type = map
+    default = {
+        component = "bastion"
+    }
 }
 
-variable "database_subnets" {
-    default = ["10.0.21.0/24", "10.0.22.0/24"]  
-}
-
-variable "is_peering_required" {
-  default = true
+variable "ansible_sg_tags" {
+    type = map
+    default = {
+        component = "ansible"
+    }
 }
